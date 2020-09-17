@@ -12,4 +12,7 @@ url = 'http://127.0.0.1:8000/api/customers';
   register(customer){
     return this.http.post(this.url, customer);
   }
+
+
+
 }
