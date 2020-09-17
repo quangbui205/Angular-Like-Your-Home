@@ -7,7 +7,7 @@
           <form class="form-signin" [formGroup]="signForm" (ngSubmit)="signIn()">
             <div class="form-label-group">
               <p>Email </p>
-              <input type="email"  class="form-control" formControlName="email" placeholder="Email address" required>
+              <input type="email"  class="form-control" formControlName="email" placeholder="Email address" >
             </div>
             <div *ngIf="email.touched && email.invalid">
               <div *ngIf="email.errors.required">
@@ -16,9 +16,10 @@
               <div *ngIf="email.errors.pattern">
                 <p class="text text-danger"> *Email not format</p>
               </div>
+            </div>
             <div class="form-label-group">
               <p>Password</p>
-              <input type="password"  class="form-control" formControlName="password" placeholder="Password" required>
+              <input type="password"  class="form-control" formControlName="password" placeholder="Password" >
             </div>
               <div *ngIf="password.touched&& password.invalid">
                 <div *ngIf="password.errors.required">
@@ -31,7 +32,6 @@
                   <p class="text text-danger"> *Password no less than 6 character</p>
                 </div>
               </div>
-
             <div class="custom-control custom-checkbox mb-3">
               <input type="checkbox" class="custom-control-input" id="customCheck1">
               <label class="custom-control-label" for="customCheck1">Remember password</label>
