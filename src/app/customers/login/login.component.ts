@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.signForm = this.fb.group({
-      email: ['', [Validators.pattern(this.emailPattern), Validators.required]],
+      email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
       password: ['', [Validators.required, Validators.maxLength(20), Validators.minLength(6)]]
     });
   }
@@ -34,9 +34,11 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['login']);
     }
   }
+  // tslint:disable-next-line:typedef
   get password(){
     return this.signForm.get('password');
   }
+  // tslint:disable-next-line:typedef
   get email(){
     return this.signForm.get('email');
   }
