@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   signForm: FormGroup;
+  emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.com$';
 
   constructor(private loginService: LoginService,
               private router: Router,
@@ -18,8 +19,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.signForm = this.fb.group({
-      email: ['', [Validators.email, Validators.required]],
-      password: ['', [Validators.required]]
+      email: ['', [Validators.pattern(this.emailPattern), Validators.required]],
+      password: ['', [Validators.required, Validators.maxLength(20), Validators.minLength(6)]]
     });
   }
 
@@ -32,5 +33,11 @@ export class LoginComponent implements OnInit {
     }else{
       this.router.navigate(['login']);
     }
+  }
+  get password(){
+    return this.signForm.get('password');
+  }
+  get email(){
+    return this.signForm.get('email');
   }
 }
