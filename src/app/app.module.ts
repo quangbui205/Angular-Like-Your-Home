@@ -13,12 +13,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LoginComponent} from './customers/login/login.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './layouts/home/home.component';
-import { NavbarComponent } from './layouts/navbar/navbar.component';
-import { RegisterComponent } from './customers/register/register.component';
-import { ListComponent } from './houses/list/list.component';
+import {ListComponent} from './houses/list/list.component';
 
 // @ts-ignore
 @NgModule({
@@ -27,7 +22,7 @@ import { ListComponent } from './houses/list/list.component';
     HomeComponent,
     NavbarComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
     ListComponent
   ],
   imports: [
