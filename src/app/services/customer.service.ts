@@ -16,7 +16,6 @@ export class CustomerService {
   register(customer) {
     return this.http.post(this.url, customer);
   }
-
   // tslint:disable-next-line:typedef
   getAllCustomers(): Observable<ICustomer[]> {
     return this.http.get<ICustomer[]>(this.url);
@@ -26,4 +25,6 @@ export class CustomerService {
   getCustomerById(id: number): Observable<ICustomer> {
     return this.http.get<ICustomer>(this.url + '/' + id);
   }
+
+
 }

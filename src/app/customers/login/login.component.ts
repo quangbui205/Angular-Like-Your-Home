@@ -33,5 +33,9 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['login']);
     }
   }
+  // tslint:disable-next-line:typedef
+  signIn() {
+
+  }
 
 }

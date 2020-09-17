@@ -14,7 +14,6 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.com$';
   phonePattern = '^((\\0))?[0-9]{9}$';
-  passwordPattern = '^[a-z0-9]{10}$';
 
   constructor(private registerService: CustomerService,
               private reactive: ReactiveFormsModule,
@@ -30,28 +29,41 @@ export class RegisterComponent implements OnInit {
       email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
       phone: ['', [Validators.required, Validators.pattern(this.phonePattern), Validators.maxLength(10)]],
       address: ['', [Validators.required, Validators.maxLength(30)]],
-      password: ['', [Validators.required, Validators.maxLength(20), Validators.pattern(this.passwordPattern)]]
+      password: ['', [Validators.required, Validators.maxLength(20), Validators.minLength(6)]],
+      image: ['']
     });
   }
-  get username(){
+
+  // tslint:disable-next-line:typedef
+  get username() {
     return this.registerForm.get('username');
   }
-  get email(){
+
+  // tslint:disable-next-line:typedef
+  get email() {
     return this.registerForm.get('email');
   }
-  get phone(){
+
+  // tslint:disable-next-line:typedef
+  get phone() {
     return this.registerForm.get('phone');
   }
-  get address(){
+
+  // tslint:disable-next-line:typedef
+  get address() {
     return this.registerForm.get('address');
   }
-  get password(){
+
+  // tslint:disable-next-line:typedef
+  get password() {
     return this.registerForm.get('password');
   }
 
   // tslint:disable-next-line:typedef
   register() {
-    console.log(this.registerForm);
+    this.registerService.register(this.registerForm.value).subscribe(data => {
+      this.router.navigate(['login']);
+    });
   }
 
 
