@@ -16,4 +16,9 @@ export class HouseService {
   getAllHouse(): Observable<IHouse[]>{
     return this.http.get<IHouse[]>(this.url);
   }
+
+  addHouse(house: Partial<IHouse>): Observable<IHouse>
+  {
+    return this.http.post<IHouse>(this.url, house);
+  }
 }
