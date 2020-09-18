@@ -14,6 +14,8 @@ import {RegisterComponent} from './customers/register/register.component';
 import {AppRoutingModule} from './app-routing.module';
 import {NavbarComponent} from './layouts/navbar/navbar.component';
 import { AddComponent } from './houses/add/add.component';
+import { DetailComponent } from './houses/detail/detail.component';
+import { FooterComponent } from './layouts/footer/footer.component';
 
 // @ts-ignore
 @NgModule({
@@ -24,7 +26,9 @@ import { AddComponent } from './houses/add/add.component';
     RegisterComponent,
     LoginComponent,
     ListComponent,
-    AddComponent
+    AddComponent,
+    DetailComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
