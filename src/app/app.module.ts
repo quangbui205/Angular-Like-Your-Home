@@ -13,6 +13,7 @@ import {HomeComponent} from './layouts/home/home.component';
 import {RegisterComponent} from './customers/register/register.component';
 import {AppRoutingModule} from './app-routing.module';
 import {NavbarComponent} from './layouts/navbar/navbar.component';
+import { AddComponent } from './houses/add/add.component';
 
 // @ts-ignore
 @NgModule({
@@ -22,7 +23,8 @@ import {NavbarComponent} from './layouts/navbar/navbar.component';
     NavbarComponent,
     RegisterComponent,
     LoginComponent,
-    ListComponent
+    ListComponent,
+    AddComponent
   ],
   imports: [
     BrowserModule,
