@@ -20,7 +20,7 @@ const routes: Routes = [
       {path: '', component: HomeComponent},
       {path: 'list', component: ListComponent},
       {path: 'add', component: AddComponent},
-      {path: 'detail', component: DetailComponent },
+      {path: 'detail/:id', component: DetailComponent },
     ],
     canActivate: [IsAuthenGuard]
   },

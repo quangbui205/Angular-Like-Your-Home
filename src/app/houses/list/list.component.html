@@ -56,7 +56,7 @@
                 </tr>
                 </tbody>
               </table>
-              <a (click)="detail()" class="primary-btn">More Details</a>
+              <a [routerLink]="['/home/detail',house.id]" class="primary-btn">More Details</a>
             </div>
           </div>
         </div>
