@@ -16,7 +16,7 @@ export class CustomerService extends HttpBaseService {
 
   // tslint:disable-next-line:typedef
   register(customer) {
-    return this.http.post(environment.url + '/customers', customer, {headers: this.getHeaders()});
+    return this.http.post(environment.url + '/register', customer, {headers: this.getHeaders()});
   }
 
   // tslint:disable-next-line:typedef
