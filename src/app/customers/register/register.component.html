@@ -81,9 +81,11 @@
     <div *ngIf="!this.downloadURL && (this.downloadURL != null && this.downloadURL !== '')">
       <img src=" " alt="" style="width: 150px; height: 150px">
     </div>
+
     <div *ngIf="this.downloadURL">
       <img src="{{downloadURL}}" alt="" style="width: 150px; height: 150px">
     </div>
+
     <div class="row ml-1 text-center">
       <div>
         <button [disabled]="registerForm.invalid" class="btn btn-success ">Register</button>
@@ -94,3 +96,4 @@
     </div>
   </form>
 </div>
+<app-footer></app-footer>
