@@ -76,6 +76,7 @@ export class RegisterComponent implements OnInit {
 
   downloadURL: string = '';
 
+  // tslint:disable-next-line:typedef
   upload(event) {
     const file = event.target.files[0];
     let filePath = file.name;
