@@ -1,23 +1,24 @@
 import {Injectable} from '@angular/core';
 import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router} from '@angular/router';
 import {Observable} from 'rxjs';
-import {LoginService} from './services/login.service';
+import {AuthService} from './services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IsAuthenGuard implements CanActivate {
-  constructor(private loginService: LoginService,
+  constructor(private authService: AuthService,
               private router: Router) {
   }
+
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
-    const customerLogin = this.loginService.getCustomer();
-    if (!customerLogin){
+    const token = this.authService.getJWTToken();
+    if (!token) {
       this.router.navigate(['login']);
     }
     return true;
+
   }
 }
