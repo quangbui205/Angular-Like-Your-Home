@@ -94,3 +94,22 @@
     </div>
   </form>
 </div>
+
+<!--$customer = new Customer();-->
+<!--$customer->username = $request->username;-->
+<!--$customer->email = $request->email;-->
+<!--$customer->phone = $request->phone;-->
+<!--$customer->address = $request->address;-->
+<!--$customer->password = $request->password;-->
+
+<!--// Nếu file không tồn tại thì trường image gán bằng NULL-->
+<!--if (!$request->hasFile('image')) {-->
+<!--$customer->image = $request->inputFile;-->
+<!--} else {-->
+<!--$file = $request->file('image');-->
+<!--$fileName = $file->getClientOriginalName();-->
+<!--$newFileName = "$fileName";-->
+<!--$request->file('image')->storeAs('public/images', $newFileName);-->
+<!--$customer->image = $newFileName;-->
+<!--}-->
+<!--$customer->save();-->

@@ -7,14 +7,14 @@ import {ICustomer} from '../interfaces/icustomer';
   providedIn: 'root'
 })
 export class CustomerService {
-  public url = 'http://127.0.0.1:8000/api/customers';
+  public url = 'http://127.0.0.1:8000/api/register';
 
   constructor(private http: HttpClient) {
   }
 
   // tslint:disable-next-line:typedef
-  register(customer) {
-    return this.http.post(this.url, customer);
+  register(user) {
+    return this.http.post(this.url, user);
   }
   // tslint:disable-next-line:typedef
   getAllCustomers(): Observable<ICustomer[]> {
