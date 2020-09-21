@@ -4,6 +4,6 @@ export interface ICustomer {
   email: string;
   phone: number;
   address: string;
-  password: string;
   image: string;
+  password: string;
 }

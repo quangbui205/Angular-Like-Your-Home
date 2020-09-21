@@ -1,29 +1,35 @@
-import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpEvent} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {IHouse} from '../interfaces/ihouse';
-
+import {CustomerService} from './customer.service';
+import {LoginService} from './login.service';
+import {AuthService} from './auth.service';
+import {environment} from '../../environments/environment';
+import {HttpBaseService} from './http-base.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class HouseService {
-  public url = 'http://127.0.0.1:8000/api/houses';
+export class HouseService extends HttpBaseService {
 
-  constructor(private http: HttpClient ) { }
+  token = this.authService.getJWTToken();
 
-  getAllHouse(): Observable<IHouse[]>{
-    return this.http.get<IHouse[]>(this.url);
+  constructor(private http: HttpClient,
+              private authService: AuthService) {
+    super();
   }
 
-  addHouse(house: Partial<IHouse>): Observable<IHouse>
-  {
-    return this.http.post<IHouse>(this.url, house);
+  getAllHouse(): Observable<any> {
+    return this.http.get<any>(environment.url + '/houses', {headers: this.getHeaders()});
   }
 
-  getHouseId(id: number): Observable<IHouse>
-  {
-    return this.http.get<IHouse>(this.url + '/' + id);
+  addHouse(house: Partial<IHouse>): Observable<any> {
+    return this.http.post<IHouse>(environment.url + '/houses', {headers: this.getHeaders()});
+  }
+
+  getHouseId(id: number): Observable<any> {
+    return this.http.get<any>(environment.url + '/houses' + '/' + id, {headers: this.getHeaders()});
   }
 }
