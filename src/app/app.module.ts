@@ -1,4 +1,3 @@
-
 // @ts-ignore
 import {BrowserModule} from '@angular/platform-browser';
 // @ts-ignore
@@ -13,8 +12,12 @@ import {HomeComponent} from './layouts/home/home.component';
 import {RegisterComponent} from './customers/register/register.component';
 import {AppRoutingModule} from './app-routing.module';
 import {NavbarComponent} from './layouts/navbar/navbar.component';
+import {environment} from '../environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorage } from '@angular/fire/storage';
 
-// @ts-ignore
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,10 +32,12 @@ import {NavbarComponent} from './layouts/navbar/navbar.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule
 
   ],
-  providers: [],
+  providers: [AngularFirestoreModule, AngularFireStorage],
   bootstrap: [AppComponent]
 })
 export class AppModule {
