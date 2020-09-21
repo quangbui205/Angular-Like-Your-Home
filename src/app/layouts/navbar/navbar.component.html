@@ -79,11 +79,12 @@
             </div>
             <a href="#" class="bk-btn">Booking Now</a>
             <div class="language-option">
-              <img src="{{customerLogin.image}}" alt="">
-              <span>{{customerLogin.username}} <i class="fa fa-angle-down"></i></span>
+              <img src="{{userLoginCurrent.image}}" alt="">
+              <span>{{userLoginCurrent.username}} <i class="fa fa-angle-down"></i></span>
               <div class="flag-dropdown">
-                <ul *ngIf="customerLogin">
+                <ul *ngIf="userLoginCurrent">
                   <li><a href="#">Zi</a></li>
+                  <li><a [routerLink]="['/home/add']">Add New Home</a></li>
                   <li><a href="" (click)="logout()">Logout</a></li>
 <!--                  <li><a [routerLink]="['/register']">Register</a></li>-->
                 </ul>

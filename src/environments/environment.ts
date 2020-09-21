@@ -5,6 +5,7 @@
 
 export const environment = {
   production: false,
+  url: 'http://127.0.0.1:8000/api',
   firebaseConfig: {
     apiKey: 'AIzaSyAVPv2SjbrrVJ_B4rROhvKFiP5Pazs6B_I',
     authDomain: 'http://localhost:4200',
@@ -13,6 +14,7 @@ export const environment = {
     storageBucket: 'upload-image-edb81.appspot.com',
     messagingSenderId: '418939664543'
   }
+
 };
 
 

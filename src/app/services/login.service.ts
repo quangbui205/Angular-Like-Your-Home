@@ -6,29 +6,26 @@ import {logger} from 'codelyzer/util/logger';
   providedIn: 'root'
 })
 export class LoginService {
-  customers = [];
+  result;
+  token;
+  customer;
 
   constructor(private customerService: CustomerService) {
   }
 
-  findCustomer(data): boolean {
+  findCustomer(data): any {
     // @ts-ignore
     // console.log(this.customerService.getAll());
     // tslint:disable-next-line:no-shadowed-variable
-    this.customerService.getAllCustomers().subscribe(data => {
-      this.customers = data;
-      console.log(this.customers);
+    this.customerService.login(data).subscribe(data => {
+      this.result = data;
+      this.customer = this.result.user;
+      this.token = this.result.token;
+      console.log(this.customer);
+      localStorage.setItem('userLogin', JSON.stringify(this.customer));
+      localStorage.setItem('token', JSON.stringify(this.token));
     });
-    // console.log(customers);
-    // @ts-ignore
-    for (const customer of this.customers) {
-      // tslint:disable-next-line:triple-equals
-      if (data.email == customer.email && data.password == customer.password) {
-        localStorage.setItem('customerLogin', JSON.stringify(customer));
-        return true;
-      }
-    }
-    return false;
+    return true;
   }
 
   getCustomer(): any {
