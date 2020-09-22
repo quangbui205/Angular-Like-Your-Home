@@ -8,6 +8,9 @@ import {AuthService} from '../../services/auth.service';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
 
+
+
+
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
@@ -23,6 +26,8 @@ export class AddComponent implements OnInit {
               private authService: AuthService,
               private loginService: LoginService,
               private storage: AngularFireStorage) { }
+              private customerService: CustomerService,
+
 
   ngOnInit(): void {
     this.addHouseForm = this.fb.group({
@@ -46,7 +51,7 @@ export class AddComponent implements OnInit {
     house.customer_id = this.customerLogin.id;
     console.log(house);
     this.houseService.addHouse(house).subscribe(data => {
-      this.router.navigate(['home/list']);
+      this.router.navigate(['/home/list']);
     });
   }
   downloadURL: string;
