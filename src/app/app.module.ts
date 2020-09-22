@@ -22,6 +22,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { AddComponent } from './houses/add/add.component';
 import { DetailComponent } from './houses/detail/detail.component';
 import { FooterComponent } from './layouts/footer/footer.component';
+import { CheckoutComponent } from './houses/checkout/checkout.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { FooterComponent } from './layouts/footer/footer.component';
     ListComponent,
     AddComponent,
     DetailComponent,
-    FooterComponent
+    FooterComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
