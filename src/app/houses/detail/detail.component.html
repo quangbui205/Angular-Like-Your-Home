@@ -36,7 +36,7 @@
                   <i class="icon_star"></i>
                   <i class="icon_star-half_alt"></i>
                 </div>
-                <a href="#">Booking Now</a>
+                <a href="#" >Booking Now</a>
               </div>
             </div>
             <h2>{{house.price}} VNĐ<span>/Pernight</span></h2>
@@ -156,21 +156,24 @@
       <div class="col-lg-4">
         <div class="room-booking">
           <h3>Your Reservation</h3>
-          <form action="#">
+          <form action="#" [formGroup]="formBill" (ngSubmit)="addBill()">
             <div class="check-date">
               <label for="date-in">Check In:</label>
-              <input type="text" class="date-input" id="date-in">
+              <input type="date" class="date-input hasDatepicker" id="date-in" formControlName="checkIn">
               <i class="icon_calendar"></i>
             </div>
             <div class="check-date">
               <label for="date-out">Check Out:</label>
-              <input type="text" class="date-input" id="date-out">
+              <input type="date" class="date-input hasDatepicker" id="date-out" formControlName="checkOut">
               <i class="icon_calendar"></i>
             </div>
             <div class="select-option">
               <label for="guest">Guests:</label>
-              <select id="guest">
-                <option value="">3 Adults</option>
+              <select id="guest" formControlName="order">
+                <option value="1">1 Adults</option>
+                <option value="2">2 Adults</option>
+                <option value="3">3 Adults</option>
+                <option value="4">4 Adults</option>
               </select>
             </div>
             <div class="select-option">
@@ -179,8 +182,7 @@
                 <option value="">1 Room</option>
               </select>
             </div>
-
-            <button type="submit">Check Availability</button>
+            <button>Check Availability</button>
           </form>
         </div>
       </div>
