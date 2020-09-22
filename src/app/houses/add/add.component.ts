@@ -3,8 +3,13 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {HouseService} from '../../services/house.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CustomerService} from '../../services/customer.service';
-
+import {LoginService} from '../../services/login.service';
 import {AuthService} from '../../services/auth.service';
+import {AngularFireStorage} from '@angular/fire/storage';
+import {finalize} from 'rxjs/operators';
+
+
+
 
 @Component({
   selector: 'app-add',
@@ -18,18 +23,22 @@ export class AddComponent implements OnInit {
               private houseService: HouseService,
               private router: Router,
               private route: ActivatedRoute,
+              private authService: AuthService,
+              private loginService: LoginService,
+              private storage: AngularFireStorage) { }
               private customerService: CustomerService,
-              private authService: AuthService) { }
+
 
   ngOnInit(): void {
     this.addHouseForm = this.fb.group({
       name : ['', [Validators.maxLength(120), Validators.minLength(6), Validators.required]],
-      address: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(250)]],
+      address: ['', [Validators.required,  Validators.maxLength(250)]],
       type_house: [''],
       type_room: [''],
       bedroom: ['', [Validators.required, Validators.min(1)]],
       bathroom: ['', [Validators.required, Validators.min(1)]],
       description: ['', [Validators.required, Validators.minLength(30), Validators.maxLength(250)]],
+      status: [''],
       price: ['', [Validators.required]],
       image: ['']
     });
@@ -44,6 +53,22 @@ export class AddComponent implements OnInit {
     this.houseService.addHouse(house).subscribe(data => {
       this.router.navigate(['/home/list']);
     });
+  }
+  downloadURL: string;
+  upload(event) {
+    const file = event.target.files[0];
+    let filePath = file.name;
+    let fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+
+    task.snapshotChanges().pipe(
+      finalize(() => fileRef.getDownloadURL().subscribe(
+        url => {
+          this.downloadURL = url;
+          this.addHouseForm.value.image = url;
+        }))
+    )
+      .subscribe();
   }
   // tslint:disable-next-line:typedef
   list()

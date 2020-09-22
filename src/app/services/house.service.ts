@@ -26,7 +26,7 @@ export class HouseService extends HttpBaseService {
   }
 
   addHouse(house: Partial<IHouse>): Observable<any> {
-    return this.http.post<any>(environment.url + '/houses', house, {headers: this.getHeaders()});
+    return this.http.post<IHouse>(environment.url + '/houses', house, {headers: this.getHeaders()});
   }
 
   getHouseId(id: number): Observable<any> {
