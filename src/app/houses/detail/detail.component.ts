@@ -100,8 +100,9 @@ export class DetailComponent implements OnInit {
     this.house.status = 'dang cho thue';
     this.billService.addBill(this.bill).subscribe(data => {
     });
+    console.log(this.house);
     this.houseService.updateStatus(+this.house.id, this.house).subscribe(page => {
-      this.router.navigate(['home']);
+      this.router.navigate(['/home']);
     });
   }
 
