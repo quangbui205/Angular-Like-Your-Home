@@ -32,22 +32,38 @@
           <div class="check-date">
             <label for="date-out">Check Out:</label>
             <input type="date" class="date-input" id="date-out">
-
+          </div>
+         <div class="check-date">
+           <label>Your Full Name:</label>
+           <input type="text">
+         </div>
+          <div class="check-date">
+            <label>Your Phone:</label>
+            <input type="text">
+          </div>
+          <div class="check-date">
+            <label>Your Email:</label>
+            <input type="text">
           </div>
           <div class="select-option">
-            <label for="guest">Guests:</label>
-            <select id="guest">
+            <label for="guest">Ordered:</label>
+            <select id="guest" style="display: none">
               <option value="">3 Adults</option>
             </select>
+            <div class="nice-select" tabindex="0">
+              <span class="current">I am the main residence</span>
+              <ul class="list">
+                <li data-value class="option">I am the main residence</li>
+                <li data-value class="option">For someone else</li>
+              </ul>
+            </div>
           </div>
-          <div class="select-option">
-            <label for="room">Room:</label>
-            <select id="room">
-              <option value="">1 Room</option>
-            </select>
+          <div class="check-date">
+            <label>Special Request</label>
+            <textarea type="text" style="width: 100%; height: 132px"></textarea>
           </div>
 
-          <button type="submit">Check Availability</button>
+          <button type="submit">Booking</button>
         </form>
       </div>
     </div>
