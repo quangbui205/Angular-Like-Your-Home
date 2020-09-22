@@ -11,7 +11,7 @@
         <div class="breadcrumb-text">
           <h2>Our Rooms</h2>
           <div class="bt-option">
-            <a >Home</a>
+            <a [routerLink]="['/home']">Home</a>
             <span>Rooms</span>
           </div>
         </div>
@@ -25,10 +25,10 @@
 <section class="rooms-section spad">
   <div class="container">
     <div class="row">
-      <div class="col-md-4" *ngFor="let house of listHouse">
+      <div class="col-md-6" *ngFor="let house of listHouse">
         <div >
           <div class="room-item">
-            <img src="{{house.image}}" alt="" style="width: 1000px; height: 350px">
+            <img src="{{house.image}}" alt="" style="width: 15git0px; height: 350px">
             <div class="ri-text">
               <h4>{{house.name}}</h4>
               <h3>{{house.price}} VNĐ<span>/Pernight</span></h3>

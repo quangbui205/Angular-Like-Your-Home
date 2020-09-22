@@ -8,15 +8,20 @@ import {HttpBaseService} from './http-base.service';
 @Injectable({
   providedIn: 'root'
 })
+
 export class CustomerService extends HttpBaseService {
+
 
   constructor(private http: HttpClient) {
     super();
   }
 
   // tslint:disable-next-line:typedef
+
+
   register(customer) {
     return this.http.post(environment.url + '/register', customer, {headers: this.getHeaders()});
+
   }
 
   // tslint:disable-next-line:typedef

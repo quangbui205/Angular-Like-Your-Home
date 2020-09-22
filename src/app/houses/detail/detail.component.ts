@@ -68,13 +68,11 @@ export class DetailComponent implements OnInit {
   // tslint:disable-next-line:typedef
   getHouse() {
     this.houseService.getHouseId(this.id).subscribe(data => {
-      console.log(data);
       this.house = data;
       // @ts-ignore
       this.customerService.getCustomerById(this.house.customer_id).subscribe(result => {
         // @ts-ignore
         this.customer = result.user;
-        console.log(this.customer);
       });
     });
 

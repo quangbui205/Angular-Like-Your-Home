@@ -46,9 +46,6 @@
       <div *ngIf="address.errors.maxlength">
         <p class="text text-danger"> *Address no more than 250 character</p>
       </div>
-      <div *ngIf="address.errors.minlength">
-        <p class="text text-danger"> *Address no less than 10 characters</p>
-      </div>
     </div>
 
     <div class="input-group mb-3">
@@ -92,6 +89,10 @@
         <p class="text text-danger"> *Description no less than 6 characters</p>
       </div>
     </div>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" formControlName="status" placeholder="status"
+             aria-label="status">
+    </div>
 
     <div class="input-group mb-3">
       <input type="number" class="form-control" formControlName="price" placeholder="price"
@@ -104,7 +105,7 @@
     </div>
 
     <div class="input-group mb-3">
-      <input type="text" class="form-control" formControlName="image"  placeholder="Link image"
+      <input type="file" class="form-control" formControlName="image" (change)="upload($event)"
              aria-label="imageHouse">
     </div>
 

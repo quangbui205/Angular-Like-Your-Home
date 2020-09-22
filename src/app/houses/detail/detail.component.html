@@ -8,8 +8,9 @@
         <div class="breadcrumb-text">
           <h2>Our Rooms</h2>
           <div class="bt-option">
-            <a href="">Home</a>
-            <span>Rooms</span>
+            <a [routerLink]="['/home']">Home</a>
+            <a [routerLink]="['/home/list']"><span>Rooms</span></a>
+              <span>{{house.name}}</span>
           </div>
         </div>
       </div>
@@ -22,7 +23,7 @@
 <section class="room-details-section spad">
   <div class="container">
     <div class="row">
-      <div class="col-lg-8">
+      <div class="col-lg-8" >
         <div class="room-details-item">
           <img src="{{house.image}}" alt="">
           <div class="rd-text">
@@ -36,7 +37,7 @@
                   <i class="icon_star"></i>
                   <i class="icon_star-half_alt"></i>
                 </div>
-                <a href="#" >Booking Now</a>
+                <a [routerLink]="['/home/checkout',house.id]">Booking Now</a>
               </div>
             </div>
             <h2>{{house.price}} VNĐ<span>/Pernight</span></h2>

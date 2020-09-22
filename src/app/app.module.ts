@@ -23,6 +23,8 @@ import {AddComponent} from './houses/add/add.component';
 import {DetailComponent} from './houses/detail/detail.component';
 import {FooterComponent} from './layouts/footer/footer.component';
 import {BillComponent} from './houses/bill/bill.component';
+import { CheckoutComponent } from './houses/checkout/checkout.component';
+
 
 
 @NgModule({
@@ -36,7 +38,8 @@ import {BillComponent} from './houses/bill/bill.component';
     AddComponent,
     DetailComponent,
     FooterComponent,
-    BillComponent
+    BillComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
