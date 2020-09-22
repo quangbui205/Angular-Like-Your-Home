@@ -1,16 +1,15 @@
-import {Component, OnInit} from '@angular/core';
-import {IHouse} from '../../interfaces/ihouse';
+import { Component, OnInit } from '@angular/core';
 import {HouseService} from '../../services/house.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CustomerService} from '../../services/customer.service';
-import {ICustomer} from '../../interfaces/icustomer';
 
 @Component({
-  selector: 'app-detail',
-  templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.css']
+  selector: 'app-checkout',
+  templateUrl: './checkout.component.html',
+  styleUrls: ['./checkout.component.css']
 })
-export class DetailComponent implements OnInit {
+export class CheckoutComponent implements OnInit {
+
   house = {
     id: '',
     name: '',
@@ -25,15 +24,15 @@ export class DetailComponent implements OnInit {
     image: '',
     customer_id: ''
   };
+
   customer: any = {
     username: ''
   };
 
   constructor(private houseService: HouseService,
               private router: Router,
-              private route: ActivatedRoute,
-              private customerService: CustomerService) {
-
+              private customerService: CustomerService,
+              private route: ActivatedRoute) {
   }
 
   id = +this.route.snapshot.paramMap.get('id');

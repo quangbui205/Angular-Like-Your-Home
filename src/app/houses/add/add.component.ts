@@ -3,7 +3,8 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {HouseService} from '../../services/house.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CustomerService} from '../../services/customer.service';
-import {LoginService} from '../../services/login.service';
+
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-add',
@@ -18,7 +19,7 @@ export class AddComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               private customerService: CustomerService,
-              private loginService: LoginService) { }
+              private authService: AuthService) { }
 
   ngOnInit(): void {
     this.addHouseForm = this.fb.group({
@@ -32,7 +33,7 @@ export class AddComponent implements OnInit {
       price: ['', [Validators.required]],
       image: ['']
     });
-    this.customerLogin = this.loginService.getCustomer();
+    this.customerLogin = this.authService.getUserLogin();
   }
   // tslint:disable-next-line:typedef
   addSubmit()
@@ -41,7 +42,7 @@ export class AddComponent implements OnInit {
     house.customer_id = this.customerLogin.id;
     console.log(house);
     this.houseService.addHouse(house).subscribe(data => {
-      this.router.navigate(['home/list']);
+      this.router.navigate(['/home/list']);
     });
   }
   // tslint:disable-next-line:typedef
