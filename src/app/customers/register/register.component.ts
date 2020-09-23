@@ -37,8 +37,16 @@ export class RegisterComponent implements OnInit {
       phone: ['', [Validators.required, Validators.pattern(this.phonePattern), Validators.maxLength(10)]],
       address: ['', [Validators.required, Validators.maxLength(30)]],
       password: ['', [Validators.required, Validators.maxLength(20), Validators.minLength(6)]],
-      inputFile: ['', Validators.required]
-    });
+      inputFile: ['', ],
+      confirmPassword: ['', [Validators.required, Validators.maxLength(20), Validators.minLength(6)]]
+    }, {validator: this.comparePassword});
+  }
+  comparePassword(group: FormGroup) {
+    let pass: string;
+    pass = group.get('password').value;
+    let confirmPass: string;
+    confirmPass = group.get('confirmPassword').value;
+    return (pass === confirmPass) ? null : {notSame: true};
   }
 
   // tslint:disable-next-line:typedef
@@ -70,6 +78,9 @@ export class RegisterComponent implements OnInit {
   get password() {
     return this.registerForm.get('password');
   }
+  get confirmPassword() {
+    return this.registerForm.get('confirmPassword');
+  }
 
 
   // tslint:disable-next-line:typedef
@@ -100,3 +111,42 @@ export class RegisterComponent implements OnInit {
     });
   }
 }
+
+// $house = new House();
+// $house->name = $request->name;
+// $house->type_house = $request->type_house;
+// $house->type_room = $request->type_room;
+// $house->address = $request->address;
+// $house->bedroom = $request->bedroom;
+// $house->bedroom = $request->bedroom;
+// $house->description = $request->description;
+// $house->status = $request->status;
+// $house->price = $request->price;
+// $house->customer_id = $request->customer_id;
+// if (!$request->hasFile('image')) {
+//   $house->image = $request->image;
+// } else {
+//   $file = $request->file('image');
+//   $fileName = $file->getClientOriginalName();
+//   $newFileName = "$fileName";
+//   $request->file('image')->storeAs('public/images', $newFileName);
+//   $house->image = $newFileName;
+// }
+// $house->save();
+
+// $user = new User();
+// $user->username = $request->username;
+// $user->email = $request->email;
+// $user->phone = $request->phone;
+// $user->address = $request->address;
+// if (!$request->hasFile('image')) {
+//   $user->image = $request->inputFile;
+// } else {
+//   $file = $request->file('image');
+//   $fileName = $file->getClientOriginalName();
+//   $newFileName = "$fileName";
+//   $request->file('image')->storeAs('public/images', $newFileName);
+//   $user->image = $newFileName;
+// }
+// $user->password = Hash::make($request->password);
+// $user->save();

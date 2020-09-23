@@ -21,18 +21,14 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.signForm = this.fb.group({
-      email: ['', [
-        Validators.required,
-        Validators.pattern(this.emailPattern)]],
-      password: ['', [
-        Validators.required,
-        Validators.maxLength(20),
-        Validators.minLength(6)]]
+      email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
+      password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20)]]
     });
   }
 
   signIn(): void {
     const value = this.signForm.value;
+    console.log(this.signForm);
     this.authService.login(value).subscribe(next => {
       if (next.token) {
         localStorage.setItem('token', JSON.stringify(next.token));
